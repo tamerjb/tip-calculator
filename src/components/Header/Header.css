@@ -1,11 +1,7 @@
-.header{
-    display: flex;
-    justify-content: center;
-  
-  }
-  .header__logo{
-  padding: 11.64% 0 6.21% 0;
-  }
-  
-  
-  
+.header {
+  display: flex;
+  justify-content: center;
+}
+.header__logo {
+  margin: 11.64% 0 6.21% 0;
+}
