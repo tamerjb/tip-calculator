@@ -10,6 +10,7 @@ const Calculator = (props) => {
     tip: '0',
     customValue: '0',
     numberOfPepole: '1',
+    total: '0',
   });
   const [activeButton, setActiveButton] = useState();
 
@@ -19,6 +20,7 @@ const Calculator = (props) => {
       tip: '0',
       customValue: '0',
       numberOfPepole: '1',
+      total: '0',
     });
   };
 
@@ -36,15 +38,21 @@ const Calculator = (props) => {
     let tip = (parseInt(formValues.amount) * parseInt(formValues.tip)) / 100;
     let customTip =
       (parseInt(formValues.amount) * parseInt(formValues.customValue)) / 100;
-
-    return formValues.customValue == 0 ? tip : customTip;
-  };
-  const handleTotal = () => {
-    let total = parseInt(formValues.amount) + parseInt(handleTip());
-    if (isNaN(total)) {
-      console.log('total', total);
+    if (isNaN(tip || customTip)) {
+      return 0;
+    } else {
+      return formValues.customValue == 0 ? tip : customTip;
     }
-    return total / parseInt(formValues.numberOfPepole);
+  };
+  const handleTotal = (e) => {
+    let total = parseInt(formValues.amount) + parseInt(handleTip());
+
+    if (isNaN(total)) {
+      return 0;
+    } else {
+      console.log('here');
+      return total / parseInt(formValues.numberOfPepole);
+    }
   };
 
   return (
@@ -153,6 +161,7 @@ const Calculator = (props) => {
               type='number'
               min='1'
               max='100'
+              pattern='[1-9]*'
               id='pepole-input'
               className='calculator__input'
               value={formValues.numberOfPepole}
