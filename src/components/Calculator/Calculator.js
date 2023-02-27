@@ -6,7 +6,7 @@ const Calculator = (props) => {
 
   // const [tip, settip] = useState(10);
   const [formValues, setFormValues] = useState({
-    amount: '10',
+    amount: '0',
     tip: '0',
     customValue: '0',
     numberOfPepole: '1',
@@ -15,7 +15,7 @@ const Calculator = (props) => {
 
   const handleReset = () => {
     setFormValues({
-      amount: '10',
+      amount: '0',
       tip: '0',
       customValue: '0',
       numberOfPepole: '1',
@@ -52,12 +52,14 @@ const Calculator = (props) => {
       <form className='calculator__form' onSubmit={handleSubmit}>
         <div className='calculator__wrapper'>
           <div className='calculator__element calculator__input-container'>
-            <label htmlFor='money-input'>Bill:</label>
+            <label className='calclulator__form-label' htmlFor='money-input'>
+              Bill:
+            </label>
             <input
               type='number'
               step='0.01'
               min='1'
-              max='1000'
+              max='10000'
               id='money-input'
               className='calculator__input'
               value={formValues.amount}
@@ -66,10 +68,12 @@ const Calculator = (props) => {
               }
               placeholder='$0.00'
             />
-            <span class='icon'></span>
+            <span className='icon'></span>
           </div>
           <div>
-            <label htmlFor='custom--input'>Select Tip:</label>
+            <label className='calclulator__form-label' htmlFor='custom--input'>
+              Select Tip:
+            </label>
 
             <div className='grid-container '>
               <button
@@ -136,14 +140,19 @@ const Calculator = (props) => {
                   setFormValues({ ...formValues, customValue: e.target.value })
                 }
                 placeholder='Custom'
+                min='1'
+                max='100'
               />
             </div>
           </div>
           <div className='calculator__element calculator__input-container calculator__input-container-ppl'>
-            <label htmlFor='pepole-input'>Number of Pepole:</label>
+            <label className='calclulator__form-label' htmlFor='pepole-input'>
+              Number of Pepole:
+            </label>
             <input
               type='number'
               min='1'
+              max='100'
               id='pepole-input'
               className='calculator__input'
               value={formValues.numberOfPepole}
@@ -151,7 +160,7 @@ const Calculator = (props) => {
                 setFormValues({ ...formValues, numberOfPepole: e.target.value })
               }
             />
-            <span class='icon'></span>
+            <span className='icon'></span>
           </div>
         </div>
 
