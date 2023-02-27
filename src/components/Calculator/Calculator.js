@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Calculator.css';
 
 const Calculator = (props) => {
+  const min = 1;
+  const max = 10000;
   // const [amount, setAmount] = useState('');
 
   // const [tip, settip] = useState(10);
@@ -38,21 +40,23 @@ const Calculator = (props) => {
     let tip = (parseInt(formValues.amount) * parseInt(formValues.tip)) / 100;
     let customTip =
       (parseInt(formValues.amount) * parseInt(formValues.customValue)) / 100;
-    if (isNaN(tip || customTip)) {
-      return 0;
-    } else {
-      return formValues.customValue == 0 ? tip : customTip;
-    }
+
+    return formValues.customValue == 0 ? tip : customTip;
   };
+
   const handleTotal = (e) => {
     let total = parseInt(formValues.amount) + parseInt(handleTip());
 
-    if (isNaN(total)) {
-      return 0;
-    } else {
-      console.log('here');
-      return total / parseInt(formValues.numberOfPepole);
-    }
+    return total / parseInt(formValues.numberOfPepole);
+  };
+
+  const handleChange = (e) => {
+    const value = Math.max(min, Math.min(max, Number(e.target.value)));
+    setFormValues({ ...formValues, amount: value });
+  };
+  const handlePepole = (e) => {
+    const value = Math.max(min, Math.min(max, Number(e.target.value)));
+    setFormValues({ ...formValues, numberOfPepole: value });
   };
 
   return (
@@ -71,8 +75,10 @@ const Calculator = (props) => {
               id='money-input'
               className='calculator__input'
               value={formValues.amount}
-              onChange={(e) =>
-                setFormValues({ ...formValues, amount: e.target.value })
+              onChange={
+                handleChange
+
+                // setFormValues({ ...formValues, amount: e.target.value })
               }
               placeholder='$0.00'
             />
@@ -165,9 +171,7 @@ const Calculator = (props) => {
               id='pepole-input'
               className='calculator__input'
               value={formValues.numberOfPepole}
-              onChange={(e) =>
-                setFormValues({ ...formValues, numberOfPepole: e.target.value })
-              }
+              onChange={handlePepole}
             />
             <span className='icon'></span>
           </div>
