@@ -111,7 +111,7 @@
   -o-transform: translateY(-50%);
 }
 
-.style2 {
+.calculator__element-green {
   background-color: #00474b;
   border-radius: 0.5em;
   -webkit-border-radius: 0.5em;
@@ -150,7 +150,7 @@
   font-size: 48px;
   font-weight: 700;
   line-height: 71px;
-  width: 6rem;
+  max-width: 10rem;
   color: #26c2ae;
   margin: 0;
   padding: 0 3.5%;

@@ -164,7 +164,7 @@ const Calculator = (props) => {
           </div>
         </div>
 
-        <div className='calculator__wrapper style2'>
+        <div className='calculator__wrapper calculator__element-green'>
           <div className='calculator__total'>
             <div>
               <p className='calculator__total-title'>Tip Amout</p>
