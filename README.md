@@ -26,7 +26,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://tip-calculator-alpha-nine.vercel.app)
+- Live Site URL: [live site](https://tip-calculator-alpha-nine.vercel.app)
 
 ## My process
 
